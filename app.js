@@ -278,6 +278,27 @@
     return intro;
   }
 
+  // Layouts: id -> data-theme on <html>; sw = Vorschaufarben [Kopf, Hintergrund, Karte, Akzent]
+  var THEMES = [
+    { id: 'nina', name: 'Nina Rosa', desc: 'Pink-Lila, verspielt', heart: '❤️', meta: '#2a1027', sw: ['#3a1637', '#2a1027', '#3f1a3c', '#ec4899'] },
+    { id: 'anime', name: 'Anime', desc: 'Manga-Look, hell', heart: '💖', meta: '#ff4f8b', sw: ['#ff4f8b', '#fff7fb', '#ffffff', '#4cc9f0'] },
+    { id: 'depot', name: 'Depot', desc: 'Navy & Gold, edel', heart: '❤️', meta: '#0B1F33', sw: ['#0B1F33', '#F7F5F1', '#FFFFFF', '#B8912F'] },
+    { id: 'hud', name: 'Gym-HUD', desc: 'Jarvis, Cyan-Glühen', heart: '💙', meta: '#04070b', sw: ['#04070b', '#061118', '#0a1a24', '#42e8ff'] },
+    { id: 'mono', name: 'Schwarz-Weiß', desc: 'Schlicht, Anthrazit', heart: '🤍', meta: '#000000', sw: ['#000000', '#0d0d0d', '#1c1d1f', '#ffffff'] },
+    { id: 'classic', name: 'Klassik Gym', desc: 'Sportlich, Rot', heart: '❤️', meta: '#0e0e10', sw: ['#0e0e10', '#18181b', '#1c1c1f', '#e30613'] }
+  ];
+  function theme() {
+    var id = S.settings.theme;
+    for (var i = 0; i < THEMES.length; i++) if (THEMES[i].id === id) return THEMES[i];
+    return THEMES[0];
+  }
+  function applyTheme() {
+    var t = theme();
+    document.documentElement.setAttribute('data-theme', t.id);
+    var m = document.querySelector('meta[name="theme-color"]');
+    if (m) m.setAttribute('content', t.meta);
+  }
+
   // ================================================================
   // Router & UI state
   // ================================================================
@@ -326,7 +347,7 @@
       : '<button class="iconbtn" data-a="menu" aria-label="Menü">…</button>';
     return '<header class="bar">' + left +
       (opts.script
-        ? '<h1 class="script"><span class="gradtext">' + title + '</span> <span class="heart">❤️</span></h1>'
+        ? '<h1 class="script"><span class="gradtext">' + title + '</span> <span class="heart">' + theme().heart + '</span></h1>'
         : '<h1>' + title + '</h1>') +
       (opts.right || '<span class="spacer"></span>') + '</header>';
   }
@@ -418,22 +439,22 @@
     var g = '';
     for (var k = 0; k <= 3; k++) {
       var v = lo + (hi - lo) * k / 3, y = Y(v);
-      g += '<line x1="' + pl + '" x2="' + (W - pr) + '" y1="' + y + '" y2="' + y + '" stroke="#6b2a62" stroke-dasharray="3 4"/>' +
+      g += '<line class="grid" x1="' + pl + '" x2="' + (W - pr) + '" y1="' + y + '" y2="' + y + '" stroke-dasharray="3 4"/>' +
         '<text x="' + (pl - 6) + '" y="' + (y + 3) + '" text-anchor="end">' + shortNum(v) + '</text>';
     }
     var line = pts.map(function (p, i) { return X(i).toFixed(1) + ',' + Y(p.y).toFixed(1); }).join(' ');
     var area = 'M' + X(0) + ',' + Y(lo) + ' L' + line.split(' ').join(' L') + ' L' + X(pts.length - 1) + ',' + Y(lo) + ' Z';
     var dots = pts.map(function (p, i) {
-      return '<circle cx="' + X(i) + '" cy="' + Y(p.y) + '" r="' + (pts.length > 30 ? 2 : 3.5) + '" fill="#fff" stroke="#ec4899" stroke-width="2"/>';
+      return '<circle cx="' + X(i) + '" cy="' + Y(p.y) + '" r="' + (pts.length > 30 ? 2 : 3.5) + '" class="dot" stroke-width="2"/>';
     }).join('');
     var lab = '<text x="' + X(0) + '" y="' + (H - 6) + '" text-anchor="' + (pts.length === 1 ? 'middle' : 'start') + '">' + esc(pts[0].label) + '</text>';
     if (pts.length > 1) lab += '<text x="' + X(pts.length - 1) + '" y="' + (H - 6) + '" text-anchor="end">' + esc(pts[pts.length - 1].label) + '</text>';
     var gid = 'g' + Math.random().toString(36).slice(2, 7);
     return '<svg class="chart" viewBox="0 0 ' + W + ' ' + H + '" preserveAspectRatio="none" style="height:' + H + 'px">' +
-      '<defs><linearGradient id="' + gid + '" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ec4899" stop-opacity=".45"/>' +
-      '<stop offset="1" stop-color="#c084fc" stop-opacity="0"/></linearGradient></defs>' + g +
+      '<defs><linearGradient id="' + gid + '" x1="0" y1="0" x2="0" y2="1"><stop class="s1" offset="0" stop-opacity=".4"/>' +
+      '<stop class="s2" offset="1" stop-opacity="0"/></linearGradient></defs>' + g +
       '<path d="' + area + '" fill="url(#' + gid + ')"/>' +
-      '<polyline points="' + line + '" fill="none" stroke="#f472b6" stroke-width="2.5" stroke-linejoin="round"/>' + dots + lab + '</svg>';
+      '<polyline class="ln" points="' + line + '" fill="none" stroke-width="2.5" stroke-linejoin="round"/>' + dots + lab + '</svg>';
   }
   function shortNum(v) {
     if (v >= 10000) return Math.round(v / 1000) + 'k';
@@ -685,7 +706,7 @@
 
   function mDone() {
     var m = modal;
-    var out = '<h3 class="center">Training gespeichert ❤️</h3>' +
+    var out = '<h3 class="center">Training gespeichert ' + theme().heart + '</h3>' +
       '<div class="center muted">' + esc(m.planName) + ' · ' + fmtMin(m.duration) + ' · ' + fmtNum(m.volume) + ' kg bewegt</div>';
     if (m.intro) {
       out += '<div class="voucher intro"><b>Belohnungssystem:</b> Gewinne bei jeder Benchmark-Erhöhung einen Preis. ' +
@@ -987,7 +1008,14 @@
   // ================================================================
   function vSettings() {
     var bytes = (localStorage.getItem(KEY) || '').length * 2;
-    var out = '<div class="card"><h2>Körpergewicht</h2><label class="f" style="margin:0"><span>Für Körpergewicht-Sätze im Volumen (kg)</span>' +
+    var cur = theme().id;
+    var out = '<div class="card"><h2>Layout</h2><div class="themes">' + THEMES.map(function (t) {
+      return '<button class="theme-tile' + (t.id === cur ? ' on' : '') + '" data-a="theme" data-id="' + t.id + '">' +
+        '<span class="pv" style="background:' + t.sw[1] + '"><span class="h" style="background:' + t.sw[0] + '"></span>' +
+        '<span class="b"><span class="c" style="background:' + t.sw[2] + '"></span><span class="a" style="background:' + t.sw[3] + '"></span></span></span>' +
+        '<span class="nm">' + esc(t.name) + '</span><span class="ds">' + esc(t.desc) + '</span></button>';
+    }).join('') + '</div></div>' +
+      '<div class="card"><h2>Körpergewicht</h2><label class="f" style="margin:0"><span>Für Körpergewicht-Sätze im Volumen (kg)</span>' +
       '<input class="inp" inputmode="decimal" data-in="bw" value="' + esc(S.settings.bodyweight === null ? '' : fmtKg(S.settings.bodyweight)) + '" placeholder="z. B. 60"></label></div>' +
       '<div class="card"><h2>Backup</h2><div class="small muted" style="margin-bottom:10px">Alle Daten liegen nur auf diesem Handy. Ab und zu ein Backup machen und z. B. in iCloud oder per Nachricht sichern.</div>' +
       '<div class="btns"><button class="btn primary" data-a="export">Backup exportieren</button><button class="btn" data-a="import">Backup laden</button></div>' +
@@ -1021,6 +1049,7 @@
       if (!confirm('Backup laden?\n\nDas überschreibt ALLE aktuellen Daten auf diesem Handy.')) return;
       S = migrate(d);
       save();
+      applyTheme();
       toast('Backup geladen');
       go('#/');
     };
@@ -1183,6 +1212,7 @@
         break;
 
       // Einstellungen
+      case 'theme': S.settings.theme = ds.id; save(); applyTheme(); render(); break;
       case 'export': exportData(); break;
       case 'import': document.getElementById('import-file').click(); break;
     }
@@ -1239,5 +1269,6 @@
   if ('serviceWorker' in navigator && location.protocol !== 'file:') {
     navigator.serviceWorker.register('sw.js').catch(function () { /* offline-Cache optional */ });
   }
+  applyTheme();
   render();
 })();

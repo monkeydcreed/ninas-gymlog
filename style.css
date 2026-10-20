@@ -395,59 +395,72 @@ html[data-theme="classic"] .card.hero::after{content:"";position:absolute;inset:
 html[data-theme="classic"] .card.hero>*{position:relative;z-index:1}
 html[data-theme="hud"] .gofoot .btn{letter-spacing:.03em;font-size:14px}
 
-/* ---------- Jujutsu: Infinite-Void swirl, starfield, blue flames ---------- */
+/* ---------- Jujutsu: Infinite Void – glowing portal, speed lines, ink shards, planets ---------- */
 html[data-theme="jjk"]{
-  --bg:#050816;--bg2:#0b1028;--panel:rgba(14,18,48,.84);--panel2:#161c44;
-  --text:#e8ecff;--muted:#a5b0e8;--faint:#6670a8;--line:rgba(120,140,255,.28);
-  --pink:#4f8cff;--hot:#7aa8ff;--lila:#b06cff;--soft:#8fb3ff;
-  --ok:#5eead4;--warn:#ff6b8a;--danger:#ff3355;--gold:#c4b5fd;--gold-line:#7c3aed;
-  --grad:linear-gradient(135deg,#2f6bff 0%,#6d4dff 55%,#b06cff 100%);
-  --on-accent:#fff;--primary-border:transparent;--glow:0 0 18px rgba(79,140,255,.45);
-  --shadow:0 10px 30px rgba(0,0,10,.5);
+  --bg:#07041a;--bg2:#100a30;--panel:rgba(14,9,40,.8);--panel2:#1d1450;
+  --text:#f3eeff;--muted:#c4b5fd;--faint:#8b7fc4;--line:rgba(196,181,253,.3);
+  --pink:#d946ef;--hot:#e879f9;--lila:#67e8f9;--soft:#d8b4fe;
+  --ok:#67e8f9;--warn:#fb7185;--danger:#e11d48;--gold:#f5d0fe;--gold-line:#a855f7;
+  --grad:linear-gradient(135deg,#6366f1 0%,#a855f7 50%,#ec4899 100%);
+  --on-accent:#fff;--primary-border:transparent;--glow:0 0 20px rgba(168,85,247,.55);
+  --shadow:0 10px 30px rgba(3,1,15,.55);
   --bw:1px;--r-card:16px;--r-btn:12px;--r-inp:10px;--r-pill:999px;
   --font-title:"Hiragino Kaku Gothic StdN","Hiragino Sans","Avenir Next","Segoe UI",sans-serif;
   --font-head:"Hiragino Kaku Gothic StdN","Hiragino Sans","Avenir Next","Segoe UI",sans-serif;
   --title-size:21px;--title-weight:800;--track:.02em;
-  --bar:rgba(5,8,22,.86);--bar-line:1px solid rgba(120,140,255,.3);--bar-text:#e8ecff;
-  --icon-bg:rgba(79,140,255,.1);--icon-line:rgba(120,140,255,.45);--icon-text:#8fb3ff;
-  --title-grad:linear-gradient(90deg,#9cc2ff,#ffffff 45%,#c9a6ff);
-  --hero-bg:radial-gradient(circle at 85% 20%,rgba(176,108,255,.6),transparent 55%),radial-gradient(circle at 10% 100%,rgba(47,107,255,.65),transparent 60%),#0b1028;
-  --hero-text:#fff;--hero-line:rgba(140,160,255,.55);
-  --white-bg:#eaf1ff;--white-text:#2f3fd6;
-  --filled-bg:rgba(79,140,255,.16);--letter-text:#fff;--blink:rgba(94,234,212,.2);
-  --chart-line:#7aa8ff;--chart-grid:rgba(120,140,255,.15);--chart-dot:#050816;--chart-fill:#4f8cff;--chart-fill2:#b06cff;
-  --voucher-bg:rgba(176,108,255,.1);--voucher-text:#e9d5ff;--voucher-line:#b06cff;
-  --menu-back:rgba(2,3,12,.55);--modal-back:rgba(2,3,12,.72);
+  --bar:rgba(7,4,26,.82);--bar-line:1px solid rgba(196,181,253,.3);--bar-text:#f3eeff;
+  --icon-bg:rgba(168,85,247,.14);--icon-line:rgba(216,180,254,.45);--icon-text:#e9d5ff;
+  --title-grad:linear-gradient(90deg,#a5f3fc,#ffffff 40%,#f0abfc);
+  --hero-bg:radial-gradient(circle at 86% 22%,#fff 0,#f5d0fe 4%,rgba(217,70,239,.85) 12%,rgba(124,58,237,.45) 30%,transparent 55%),
+    radial-gradient(circle at 0% 100%,rgba(99,102,241,.7),transparent 60%),#120a35;
+  --hero-text:#fff;--hero-line:rgba(240,171,252,.6);
+  --white-bg:#ffffff;--white-text:#6d28d9;
+  --filled-bg:rgba(168,85,247,.2);--letter-text:#07041a;--blink:rgba(103,232,249,.22);
+  --chart-line:#f0abfc;--chart-grid:rgba(196,181,253,.16);--chart-dot:#07041a;--chart-fill:#d946ef;--chart-fill2:#6366f1;
+  --voucher-bg:rgba(103,232,249,.08);--voucher-text:#cffafe;--voucher-line:#67e8f9;
+  --menu-back:rgba(3,1,15,.55);--modal-back:rgba(3,1,15,.75);
 }
-html[data-theme="jjk"] body{background-color:#050816;
-  background-image:radial-gradient(1px 1px at 22px 34px,#fff,transparent),radial-gradient(1px 1px at 92px 118px,rgba(255,255,255,.75),transparent),
-    radial-gradient(1.5px 1.5px at 140px 52px,#cfe0ff,transparent),radial-gradient(1px 1px at 58px 150px,rgba(200,180,255,.8),transparent),
-    radial-gradient(1px 1px at 176px 170px,rgba(255,255,255,.6),transparent);
-  background-size:200px 200px}
-/* Domain swirl: rings and a rotating nebula around a bright core */
-html[data-theme="jjk"] body::before{content:"";position:fixed;left:-50%;top:-60%;width:200%;height:200%;z-index:0;pointer-events:none;
+/* Deep space with a bright void core and stars */
+html[data-theme="jjk"] body{background-color:#07041a;
+  background-image:
+    radial-gradient(1px 1px at 22px 34px,#fff,transparent),radial-gradient(1px 1px at 92px 118px,rgba(255,255,255,.8),transparent),
+    radial-gradient(1.5px 1.5px at 140px 52px,#e0e7ff,transparent),radial-gradient(1px 1px at 58px 150px,rgba(240,200,255,.85),transparent),
+    radial-gradient(1px 1px at 176px 170px,rgba(255,255,255,.7),transparent),
+    radial-gradient(ellipse 70% 45% at 0% 0%,rgba(236,72,153,.55),transparent 70%),
+    radial-gradient(ellipse 60% 40% at 100% 100%,rgba(99,102,241,.5),transparent 70%);
+  background-size:200px 200px,200px 200px,200px 200px,200px 200px,200px 200px,100% 100%,100% 100%;
+  background-repeat:repeat,repeat,repeat,repeat,repeat,no-repeat,no-repeat;
+  background-attachment:scroll}
+/* Speed lines bursting from the core + glowing portal ring, slowly turning */
+html[data-theme="jjk"] body::before{content:"";position:fixed;left:-60%;top:-56%;width:220%;height:200%;z-index:0;pointer-events:none;
   background:
-    radial-gradient(circle at 50% 50%,rgba(255,255,255,.85) 0,rgba(170,200,255,.55) 4px,rgba(79,140,255,.18) 40px,transparent 110px),
-    repeating-radial-gradient(circle at 50% 50%,transparent 0 44px,rgba(130,160,255,.07) 45px 46px),
-    conic-gradient(from 0deg at 50% 50%,rgba(79,140,255,.22),rgba(176,108,255,.26),rgba(5,8,22,0) 30%,rgba(79,140,255,.2) 45%,rgba(176,108,255,.18) 60%,rgba(5,8,22,0) 75%,rgba(79,140,255,.22));
-  animation:jjk-spin 120s linear infinite}
+    radial-gradient(circle at 50% 50%,transparent 0 118px,rgba(255,255,255,.95) 122px,rgba(196,181,253,.75) 128px,rgba(139,92,246,.35) 142px,transparent 175px),
+    repeating-conic-gradient(from 0deg at 50% 50%,rgba(255,255,255,0) 0deg 3deg,rgba(233,213,255,.28) 3.3deg 3.6deg,rgba(255,255,255,0) 3.9deg 7deg,rgba(165,243,252,.16) 7.2deg 7.4deg,rgba(255,255,255,0) 7.6deg 11deg),
+    radial-gradient(circle at 50% 50%,#fff 0,#ede4ff 30px,#a78bfa 70px,#5b21b6 130px,#2e1065 210px,#120a35 330px,rgba(7,4,26,0) 520px);
+  -webkit-mask-image:radial-gradient(circle at 50% 50%,#000 0 180px,rgba(0,0,0,.9) 260px,transparent 70%);
+  mask-image:radial-gradient(circle at 50% 50%,#000 0 180px,rgba(0,0,0,.9) 260px,transparent 70%);
+  animation:jjk-spin 160s linear infinite}
 @keyframes jjk-spin{to{transform:rotate(360deg)}}
-/* Blue flames along the bottom */
-html[data-theme="jjk"] body::after{content:"";position:fixed;left:0;right:0;bottom:0;height:42vh;z-index:1;pointer-events:none;transform-origin:50% 100%;
+/* Planets and white/black ink shards on top of the void */
+html[data-theme="jjk"] body::after{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;
   background:
-    radial-gradient(ellipse 16% 75% at 8% 100%,rgba(79,140,255,.5),transparent 70%),
-    radial-gradient(ellipse 12% 55% at 26% 100%,rgba(140,190,255,.42),transparent 70%),
-    radial-gradient(ellipse 18% 80% at 50% 100%,rgba(60,110,255,.45),transparent 70%),
-    radial-gradient(ellipse 12% 60% at 72% 100%,rgba(150,120,255,.4),transparent 70%),
-    radial-gradient(ellipse 16% 70% at 94% 100%,rgba(79,140,255,.5),transparent 70%);
-  animation:flicker 3.2s ease-in-out infinite alternate}
-@keyframes flicker{0%{transform:scaleY(1);opacity:.8}40%{transform:scaleY(1.07) scaleX(1.01);opacity:1}100%{transform:scaleY(.95);opacity:.75}}
-html[data-theme="jjk"] header.bar h1 .gradtext{filter:drop-shadow(0 0 8px rgba(79,140,255,.6))}
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 800' preserveAspectRatio='xMidYMid slice'%3E%3Cg fill='%23fff'%3E%3Cpolygon fill-opacity='.8' points='0,60 70,90 40,100 110,140 30,130 0,150'/%3E%3Cpolygon fill-opacity='.55' points='20,20 90,10 60,35 130,40 70,55'/%3E%3Cpolygon fill-opacity='.75' points='400,40 330,80 360,85 300,130 370,115 400,150'/%3E%3Cpolygon fill-opacity='.6' points='400,380 340,400 370,410 310,450 380,440 400,470'/%3E%3Cpolygon fill-opacity='.6' points='0,420 50,440 25,450 80,490 15,480 0,500'/%3E%3Cpolygon fill-opacity='.85' points='140,800 170,720 185,760 200,680 215,765 235,725 260,800'/%3E%3Cpolygon fill-opacity='.6' points='0,700 60,690 40,710 100,730 20,740 0,760'/%3E%3Cpolygon fill-opacity='.6' points='400,680 340,700 370,705 320,740 390,735 400,760'/%3E%3Ccircle cx='85' cy='200' r='3'/%3E%3Ccircle cx='320' cy='230' r='2'/%3E%3Ccircle cx='60' cy='330' r='2.5'/%3E%3Ccircle cx='350' cy='560' r='3'/%3E%3Ccircle cx='110' cy='610' r='2'/%3E%3Ccircle cx='290' cy='650' r='2.5'/%3E%3Ccircle cx='200' cy='120' r='1.5'/%3E%3Ccircle cx='150' cy='520' r='2'/%3E%3C/g%3E%3Cg fill='%2305030f' fill-opacity='.85'%3E%3Ccircle cx='88' cy='560' r='16'/%3E%3Ccircle cx='62' cy='596' r='6'/%3E%3Ccircle cx='312' cy='602' r='11'/%3E%3Ccircle cx='334' cy='300' r='8'/%3E%3C/g%3E%3C/svg%3E") center/cover no-repeat,
+    radial-gradient(circle at 34% 32%,#ffe4f1 0,#ff6fb5 32%,#be185d 62%,#500724 70%,rgba(80,7,36,0) 71%) no-repeat -46px 12vh/130px 130px,
+    radial-gradient(circle at 34% 32%,#ecfeff 0,#7dd3fc 32%,#0e7490 62%,#083344 70%,rgba(8,51,68,0) 71%) no-repeat calc(100% + 40px) 3vh/160px 160px;
+  opacity:.9}
+html[data-theme="jjk"] header.bar h1 .gradtext{filter:drop-shadow(0 0 8px rgba(217,70,239,.6))}
+/* Hollow-purple orb with a star flare on the main card */
+html[data-theme="jjk"] .card.hero::before{content:"";position:absolute;right:calc(14% - 60px);top:calc(22% - 60px);width:120px;height:120px;pointer-events:none;
+  background:linear-gradient(90deg,transparent 0 48%,rgba(255,255,255,.9) 50%,transparent 52% 100%),linear-gradient(0deg,transparent 0 48%,rgba(255,255,255,.9) 50%,transparent 52% 100%);
+  -webkit-mask-image:radial-gradient(circle,#000 0,transparent 70%);mask-image:radial-gradient(circle,#000 0,transparent 70%);
+  animation:jjk-pulse 2.6s ease-in-out infinite alternate}
+@keyframes jjk-pulse{from{transform:scale(.85);opacity:.7}to{transform:scale(1.1);opacity:1}}
 html[data-theme="jjk"] .card.hero::after{content:"無量空処";position:absolute;right:-4px;bottom:-16px;font-size:56px;font-weight:900;letter-spacing:.05em;
-  font-family:"Hiragino Mincho ProN","Yu Mincho",serif;color:rgba(200,215,255,.09);pointer-events:none;white-space:nowrap}
+  font-family:"Hiragino Mincho ProN","Yu Mincho",serif;color:rgba(240,220,255,.1);pointer-events:none;white-space:nowrap}
 html[data-theme="jjk"] .card.hero>*{position:relative;z-index:1}
-html[data-theme="jjk"] .card.hero .big{text-shadow:0 0 18px rgba(120,160,255,.7)}
-html[data-theme="jjk"] .btn.white{box-shadow:0 0 22px rgba(120,170,255,.7)}
+html[data-theme="jjk"] .card.hero .big{text-shadow:0 0 18px rgba(217,70,239,.75)}
+html[data-theme="jjk"] .btn.white{box-shadow:0 0 24px rgba(240,171,252,.75)}
+@keyframes flicker{0%{transform:scaleY(1);opacity:.8}40%{transform:scaleY(1.07) scaleX(1.01);opacity:1}100%{transform:scaleY(.95);opacity:.75}}
 
 /* ---------- Demon Slayer: flame breathing, water-breathing waves, checker haori ---------- */
 html[data-theme="ds"]{

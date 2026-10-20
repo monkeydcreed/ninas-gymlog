@@ -1,5 +1,5 @@
 // Offline cache. Bump VERSION on every release so phones pick up the new files.
-var VERSION = 'gymlog-v9';
+var VERSION = 'gymlog-v10';
 var FILES = ['./', 'index.html', 'style.css', 'app.js', 'manifest.webmanifest',
   'bg/sukuna.webp', 'bg/ds.webp', 'bg/jjk.webp', 'icons/icon-180.png', 'icons/icon-192.png', 'icons/icon-512.png'];
 

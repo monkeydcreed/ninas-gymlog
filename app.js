@@ -9,12 +9,13 @@
   var S = load();
 
   function blank() {
-    return { version: 1, settings: { bodyweight: null }, exercises: [], plans: [], sessions: [], active: null, rewards: [], rewardIntroSeen: false };
+    return { version: 1, settings: { bodyweight: null, ninaMode: null }, exercises: [], plans: [], sessions: [], active: null, rewards: [], rewardIntroSeen: false };
   }
   function migrate(d) {
     var b = blank();
     Object.keys(b).forEach(function (k) { if (d[k] === undefined) d[k] = b[k]; });
     if (!d.settings) d.settings = b.settings;
+    if (d.settings.ninaMode === undefined) d.settings.ninaMode = null;
     return d;
   }
   function load() {
@@ -268,7 +269,7 @@
   }
   // Lost Gutscheine aus und merkt sich, ob das Belohnungssystem schon vorgestellt wurde
   function drawRewards(pbs, date) {
-    if (!pbs.length) return false;
+    if (!ninaMode() || !pbs.length) return false;
     var intro = !S.rewardIntroSeen;
     S.rewardIntroSeen = true;
     pbs.forEach(function (pb) {
@@ -295,7 +296,19 @@
     for (var i = 0; i < THEMES.length; i++) if (THEMES[i].id === id) return THEMES[i];
     return THEMES[0];
   }
+  // Ninamodus = Name mit Herz, Gutscheine, Überraschungen. null = noch nicht gewählt.
+  function ninaMode() { return S.settings.ninaMode === true; }
+  function brandName() { return ninaMode() ? 'Ninas Gymlog' : 'Gymlog'; }
+  function heart() { return ninaMode() ? theme().heart : ''; }
+  function themeName(t) { return t.id === 'nina' && !ninaMode() ? 'Rosa' : t.name; }
+  function applyBrand() {
+    var full = ninaMode() ? 'Ninas Gymlog ❤️' : 'Gymlog';
+    document.title = full;
+    var m = document.querySelector('meta[name="apple-mobile-web-app-title"]');
+    if (m) m.setAttribute('content', full);
+  }
   function applyTheme() {
+    applyBrand();
     var t = theme();
     document.documentElement.setAttribute('data-theme', t.id);
     var m = document.querySelector('meta[name="theme-color"]');
@@ -339,6 +352,7 @@
       default: html = vDash();
     }
     app.innerHTML = html + (menuOpen ? vMenu() : '');
+    if (S.settings.ninaMode === null && !modal) modal = { type: 'mode' };
     renderModal();
     tick();
   }
@@ -350,7 +364,7 @@
       : '<button class="iconbtn" data-a="menu" aria-label="Menü">…</button>';
     return '<header class="bar">' + left +
       (opts.script
-        ? '<h1 class="script"><span class="gradtext">' + title + '</span> <span class="heart">' + theme().heart + '</span></h1>'
+        ? '<h1 class="script"><span class="gradtext">' + title + '</span>' + (heart() ? ' <span class="heart">' + heart() + '</span>' : '') + '</h1>'
         : '<h1>' + title + '</h1>') +
       (opts.right || '<span class="spacer"></span>') + '</header>';
   }
@@ -374,7 +388,7 @@
   // Views: Dashboard
   // ================================================================
   function vDash() {
-    var h = header('Ninas Gymlog', { script: true });
+    var h = header(brandName(), { script: true });
     var out = '';
     if (S.active) {
       var ap = planById(S.active.planId);
@@ -624,6 +638,7 @@
     if (modal.type === 'ex') inner = mExercise();
     else if (modal.type === 'picker') inner = mPicker();
     else if (modal.type === 'done') { inner = mDone(); mid = true; }
+    else if (modal.type === 'mode') { inner = mMode(); mid = true; }
     root.innerHTML = '<div class="modal-back' + (mid ? ' mid' : '') + '" data-a="modal-back"><div class="modal' + (mid ? ' center-m' : '') + '">' + inner + '</div></div>';
     if (modal.type === 'picker' && modal.focus) {
       modal.focus = false;
@@ -707,9 +722,15 @@
     return out;
   }
 
+  function mMode() {
+    return '<h3 class="center">Willkommen!</h3><div class="center muted" style="margin-bottom:14px">Welchen Modus möchtest du? Du kannst ihn später in den Einstellungen ändern.</div>' +
+      '<button class="mode-opt" data-a="mode-pick" data-v="nina"><span class="t">❤️ Ninamodus</span><span class="d">Mit Herz im Namen, Gutscheinen und Überraschungen</span></button>' +
+      '<button class="mode-opt" data-a="mode-pick" data-v="normal"><span class="t">Normaler Modus</span><span class="d">Schlicht: einfach „Gymlog“, ohne Extras</span></button>';
+  }
+
   function mDone() {
     var m = modal;
-    var out = '<h3 class="center">Training gespeichert ' + theme().heart + '</h3>' +
+    var out = '<h3 class="center">Training gespeichert' + (heart() ? ' ' + heart() : '') + '</h3>' +
       '<div class="center muted">' + esc(m.planName) + ' · ' + fmtMin(m.duration) + ' · ' + fmtNum(m.volume) + ' kg bewegt</div>';
     if (m.intro) {
       out += '<div class="voucher intro"><b>Belohnungssystem:</b> Gewinne bei jeder Benchmark-Erhöhung einen Preis. ' +
@@ -1016,13 +1037,15 @@
       return '<button class="theme-tile' + (t.id === cur ? ' on' : '') + '" data-a="theme" data-id="' + t.id + '">' +
         '<span class="pv" style="background:' + t.sw[1] + '"><span class="h" style="background:' + t.sw[0] + '"></span>' +
         '<span class="b"><span class="c" style="background:' + t.sw[2] + '"></span><span class="a" style="background:' + t.sw[3] + '"></span></span></span>' +
-        '<span class="nm">' + esc(t.name) + '</span><span class="ds">' + esc(t.desc) + '</span></button>';
+        '<span class="nm">' + esc(themeName(t)) + '</span><span class="ds">' + esc(t.desc) + '</span></button>';
     }).join('') + '</div></div>' +
       '<div class="card"><h2>Körpergewicht</h2><label class="f" style="margin:0"><span>Für Körpergewicht-Sätze im Volumen (kg)</span>' +
       '<input class="inp" inputmode="decimal" data-in="bw" value="' + esc(S.settings.bodyweight === null ? '' : fmtKg(S.settings.bodyweight)) + '" placeholder="z. B. 60"></label></div>' +
       '<div class="card"><h2>Backup</h2><div class="small muted" style="margin-bottom:10px">Alle Daten liegen nur auf diesem Handy. Ab und zu ein Backup machen und z. B. in iCloud oder per Nachricht sichern.</div>' +
       '<div class="btns"><button class="btn primary" data-a="export">Backup exportieren</button><button class="btn" data-a="import">Backup laden</button></div>' +
       '<input type="file" id="import-file" accept=".json,application/json" style="display:none"></div>' +
+      '<div class="card"><h2>Modus</h2><label class="check" style="margin:0"><input type="checkbox" id="nina-mode"' + (ninaMode() ? ' checked' : '') +
+      '><span>Ninamodus: ❤️ im Namen, Gutscheine bei neuem Benchmark</span></label></div>' +
       '<div class="card"><h2>Speicher</h2><div class="muted">Daten: ' + (bytes < 1024 * 1024 ? Math.max(1, Math.round(bytes / 1024)) + ' KB' : (Math.round(bytes / 1024 / 102.4) / 10).toString().replace('.', ',') + ' MB') +
       ' · ' + S.exercises.length + ' Übungen · ' + S.sessions.length + ' Trainings</div></div>';
     return header('Einstellungen') + '<div class="page">' + out + '</div>' + tabs('');
@@ -1079,7 +1102,11 @@
     switch (a) {
       case 'menu': menuOpen = !menuOpen; render(); break;
       case 'menu-close': menuOpen = false; render(); break;
-      case 'modal-back': if (ev.target === el && modal && modal.type !== 'done') closeModal(); break;
+      case 'modal-back': if (ev.target === el && modal && modal.type !== 'done' && modal.type !== 'mode') closeModal(); break;
+      case 'mode-pick':
+        S.settings.ninaMode = ds.v === 'nina';
+        save(); applyBrand(); closeModal(); render();
+        break;
       case 'modal-close': closeModal(); break;
       case 'open-analyse': go('#/analyse'); break;
       case 'chart-plan': chartPlan = ds.p; render(); break;
@@ -1258,6 +1285,9 @@
       s.mode = el.value;
       if (s.mode === 'bw') s.value = '';
       render();
+    } else if (el.id === 'nina-mode') {
+      S.settings.ninaMode = el.checked;
+      save(); applyBrand(); toast(el.checked ? 'Ninamodus an' : 'Normaler Modus');
     } else if (el.id === 'import-file' && el.files && el.files[0]) {
       importFile(el.files[0]);
       el.value = '';

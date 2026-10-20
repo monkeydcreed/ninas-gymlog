@@ -523,3 +523,10 @@ html[data-theme="sukuna"] .card,html[data-theme="sukuna"] .block,html[data-theme
 html[data-theme="ds"] .card,html[data-theme="ds"] .block,html[data-theme="ds"] .list-item,html[data-theme="ds"] .timer,
 html[data-theme="jjk"] .card,html[data-theme="jjk"] .block,html[data-theme="jjk"] .list-item,html[data-theme="jjk"] .timer{
   -webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px)}
+
+/* Mode picker */
+.mode-opt{display:block;width:100%;text-align:left;margin-bottom:10px;padding:16px;border-radius:var(--r-card);background:var(--panel);
+  border:var(--bw) solid var(--line);color:var(--text)}
+.mode-opt:first-of-type{border-color:var(--pink)}
+.mode-opt .t{display:block;font-weight:800;font-size:18px}
+.mode-opt .d{display:block;font-size:13px;color:var(--muted);margin-top:3px}

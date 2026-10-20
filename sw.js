@@ -1,7 +1,7 @@
 // Offline cache. Bump VERSION on every release so phones pick up the new files.
-var VERSION = 'gymlog-v7';
+var VERSION = 'gymlog-v9';
 var FILES = ['./', 'index.html', 'style.css', 'app.js', 'manifest.webmanifest',
-  'icons/icon-180.png', 'icons/icon-192.png', 'icons/icon-512.png'];
+  'bg/sukuna.webp', 'bg/ds.webp', 'bg/jjk.webp', 'icons/icon-180.png', 'icons/icon-192.png', 'icons/icon-512.png'];
 
 self.addEventListener('install', function (e) {
   e.waitUntil(caches.open(VERSION).then(function (c) { return c.addAll(FILES); }).then(function () { return self.skipWaiting(); }));

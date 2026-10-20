@@ -397,7 +397,7 @@ html[data-theme="hud"] .gofoot .btn{letter-spacing:.03em;font-size:14px}
 
 /* ---------- Jujutsu: Infinite Void – glowing portal, speed lines, ink shards, planets ---------- */
 html[data-theme="jjk"]{
-  --bg:#07041a;--bg2:#100a30;--panel:rgba(14,9,40,.8);--panel2:#1d1450;
+  --bg:#07041a;--bg2:#100a30;--panel:rgba(14,9,40,.55);--panel2:#1d1450;
   --text:#f3eeff;--muted:#c4b5fd;--faint:#8b7fc4;--line:rgba(196,181,253,.3);
   --pink:#d946ef;--hot:#e879f9;--lila:#67e8f9;--soft:#d8b4fe;
   --ok:#67e8f9;--warn:#fb7185;--danger:#e11d48;--gold:#f5d0fe;--gold-line:#a855f7;
@@ -421,33 +421,10 @@ html[data-theme="jjk"]{
   --menu-back:rgba(3,1,15,.55);--modal-back:rgba(3,1,15,.75);
 }
 /* Deep space with a bright void core and stars */
-html[data-theme="jjk"] body{background-color:#07041a;
-  background-image:
-    radial-gradient(1px 1px at 22px 34px,#fff,transparent),radial-gradient(1px 1px at 92px 118px,rgba(255,255,255,.8),transparent),
-    radial-gradient(1.5px 1.5px at 140px 52px,#e0e7ff,transparent),radial-gradient(1px 1px at 58px 150px,rgba(240,200,255,.85),transparent),
-    radial-gradient(1px 1px at 176px 170px,rgba(255,255,255,.7),transparent),
-    radial-gradient(ellipse 70% 45% at 0% 0%,rgba(236,72,153,.55),transparent 70%),
-    radial-gradient(ellipse 60% 40% at 100% 100%,rgba(99,102,241,.5),transparent 70%);
-  background-size:200px 200px,200px 200px,200px 200px,200px 200px,200px 200px,100% 100%,100% 100%;
-  background-repeat:repeat,repeat,repeat,repeat,repeat,no-repeat,no-repeat;
-  background-attachment:scroll}
-/* Speed lines bursting from the core + glowing portal ring, slowly turning */
-html[data-theme="jjk"] body::before{content:"";position:fixed;left:-60%;top:-56%;width:220%;height:200%;z-index:0;pointer-events:none;
-  background:
-    radial-gradient(circle at 50% 50%,transparent 0 118px,rgba(255,255,255,.95) 122px,rgba(196,181,253,.75) 128px,rgba(139,92,246,.35) 142px,transparent 175px),
-    repeating-conic-gradient(from 0deg at 50% 50%,rgba(255,255,255,0) 0deg 3deg,rgba(233,213,255,.28) 3.3deg 3.6deg,rgba(255,255,255,0) 3.9deg 7deg,rgba(165,243,252,.16) 7.2deg 7.4deg,rgba(255,255,255,0) 7.6deg 11deg),
-    radial-gradient(circle at 50% 50%,#fff 0,#ede4ff 30px,#a78bfa 70px,#5b21b6 130px,#2e1065 210px,#120a35 330px,rgba(7,4,26,0) 520px);
-  -webkit-mask-image:radial-gradient(circle at 50% 50%,#000 0 180px,rgba(0,0,0,.9) 260px,transparent 70%);
-  mask-image:radial-gradient(circle at 50% 50%,#000 0 180px,rgba(0,0,0,.9) 260px,transparent 70%);
-  animation:jjk-spin 160s linear infinite}
-@keyframes jjk-spin{to{transform:rotate(360deg)}}
-/* Planets and white/black ink shards on top of the void */
-html[data-theme="jjk"] body::after{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;
-  background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 800' preserveAspectRatio='xMidYMid slice'%3E%3Cg fill='%23fff'%3E%3Cpolygon fill-opacity='.8' points='0,60 70,90 40,100 110,140 30,130 0,150'/%3E%3Cpolygon fill-opacity='.55' points='20,20 90,10 60,35 130,40 70,55'/%3E%3Cpolygon fill-opacity='.75' points='400,40 330,80 360,85 300,130 370,115 400,150'/%3E%3Cpolygon fill-opacity='.6' points='400,380 340,400 370,410 310,450 380,440 400,470'/%3E%3Cpolygon fill-opacity='.6' points='0,420 50,440 25,450 80,490 15,480 0,500'/%3E%3Cpolygon fill-opacity='.85' points='140,800 170,720 185,760 200,680 215,765 235,725 260,800'/%3E%3Cpolygon fill-opacity='.6' points='0,700 60,690 40,710 100,730 20,740 0,760'/%3E%3Cpolygon fill-opacity='.6' points='400,680 340,700 370,705 320,740 390,735 400,760'/%3E%3Ccircle cx='85' cy='200' r='3'/%3E%3Ccircle cx='320' cy='230' r='2'/%3E%3Ccircle cx='60' cy='330' r='2.5'/%3E%3Ccircle cx='350' cy='560' r='3'/%3E%3Ccircle cx='110' cy='610' r='2'/%3E%3Ccircle cx='290' cy='650' r='2.5'/%3E%3Ccircle cx='200' cy='120' r='1.5'/%3E%3Ccircle cx='150' cy='520' r='2'/%3E%3C/g%3E%3Cg fill='%2305030f' fill-opacity='.85'%3E%3Ccircle cx='88' cy='560' r='16'/%3E%3Ccircle cx='62' cy='596' r='6'/%3E%3Ccircle cx='312' cy='602' r='11'/%3E%3Ccircle cx='334' cy='300' r='8'/%3E%3C/g%3E%3C/svg%3E") center/cover no-repeat,
-    radial-gradient(circle at 34% 32%,#ffe4f1 0,#ff6fb5 32%,#be185d 62%,#500724 70%,rgba(80,7,36,0) 71%) no-repeat -46px 12vh/130px 130px,
-    radial-gradient(circle at 34% 32%,#ecfeff 0,#7dd3fc 32%,#0e7490 62%,#083344 70%,rgba(8,51,68,0) 71%) no-repeat calc(100% + 40px) 3vh/160px 160px;
-  opacity:.9}
+/* Background: AI-generated void image under a dark veil */
+html[data-theme="jjk"] body{background:#05030a}
+html[data-theme="jjk"] body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:url("bg/jjk.webp") center/cover no-repeat}
+html[data-theme="jjk"] body::after{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;background:linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.5))}
 html[data-theme="jjk"] header.bar h1 .gradtext{filter:drop-shadow(0 0 8px rgba(217,70,239,.6))}
 /* Hollow-purple orb with a star flare on the main card */
 html[data-theme="jjk"] .card.hero::before{content:"";position:absolute;right:calc(14% - 60px);top:calc(22% - 60px);width:120px;height:120px;pointer-events:none;
@@ -460,11 +437,10 @@ html[data-theme="jjk"] .card.hero::after{content:"無量空処";position:absolut
 html[data-theme="jjk"] .card.hero>*{position:relative;z-index:1}
 html[data-theme="jjk"] .card.hero .big{text-shadow:0 0 18px rgba(217,70,239,.75)}
 html[data-theme="jjk"] .btn.white{box-shadow:0 0 24px rgba(240,171,252,.75)}
-@keyframes flicker{0%{transform:scaleY(1);opacity:.8}40%{transform:scaleY(1.07) scaleX(1.01);opacity:1}100%{transform:scaleY(.95);opacity:.75}}
 
 /* ---------- Demon Slayer: flame breathing, water-breathing waves, checker haori ---------- */
 html[data-theme="ds"]{
-  --bg:#0c0a0a;--bg2:#161111;--panel:rgba(24,18,18,.9);--panel2:#2a1d1a;
+  --bg:#0c0a0a;--bg2:#161111;--panel:rgba(24,18,18,.58);--panel2:#2a1d1a;
   --text:#fff3e8;--muted:#e7b9a0;--faint:#9a7566;--line:rgba(255,120,60,.26);
   --pink:#ff5a1f;--hot:#ff3b0f;--lila:#2ec5e8;--soft:#ffb38a;
   --ok:#4ade80;--warn:#ff7a7a;--danger:#b91c1c;--gold:#ffcf5a;--gold-line:#b7791f;
@@ -486,24 +462,10 @@ html[data-theme="ds"]{
   --voucher-bg:rgba(46,197,232,.08);--voucher-text:#d6f6ff;--voucher-line:#2ec5e8;
   --menu-back:rgba(0,0,0,.5);--modal-back:rgba(0,0,0,.72);
 }
-html[data-theme="ds"] body{background:radial-gradient(600px 380px at 0% 0%,rgba(46,197,232,.14),transparent 70%),#0c0a0a}
-/* Water breathing: seigaiha waves fading out downwards */
-html[data-theme="ds"] body::before{content:"";position:fixed;left:0;right:0;top:0;height:60vh;z-index:0;pointer-events:none;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='30'%3E%3Cg stroke='%232ec5e8' stroke-opacity='.22' stroke-width='1.2'%3E%3Cg fill='%230c0a0a'%3E%3Ccircle cx='0' cy='15' r='15'/%3E%3Ccircle cx='60' cy='15' r='15'/%3E%3C/g%3E%3Cg fill='none'%3E%3Ccircle cx='0' cy='15' r='10'/%3E%3Ccircle cx='0' cy='15' r='5'/%3E%3Ccircle cx='60' cy='15' r='10'/%3E%3Ccircle cx='60' cy='15' r='5'/%3E%3C/g%3E%3Ccircle cx='30' cy='30' r='15' fill='%230c0a0a'/%3E%3Cg fill='none'%3E%3Ccircle cx='30' cy='30' r='10'/%3E%3Ccircle cx='30' cy='30' r='5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-  background-size:60px 30px;
-  -webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent);mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent);
-  animation:ds-wave 18s linear infinite}
-@keyframes ds-wave{to{background-position:60px 0}}
-/* Flame breathing along the bottom */
-html[data-theme="ds"] body::after{content:"";position:fixed;left:0;right:0;bottom:0;height:46vh;z-index:1;pointer-events:none;transform-origin:50% 100%;
-  background:
-    radial-gradient(ellipse 14% 60% at 6% 100%,rgba(255,178,36,.5),transparent 70%),
-    radial-gradient(ellipse 18% 85% at 22% 100%,rgba(255,70,20,.55),transparent 70%),
-    radial-gradient(ellipse 12% 55% at 40% 100%,rgba(255,190,60,.45),transparent 70%),
-    radial-gradient(ellipse 20% 90% at 60% 100%,rgba(220,30,15,.55),transparent 70%),
-    radial-gradient(ellipse 12% 60% at 80% 100%,rgba(255,140,30,.5),transparent 70%),
-    radial-gradient(ellipse 16% 75% at 96% 100%,rgba(255,60,20,.5),transparent 70%);
-  animation:flicker 2.4s ease-in-out infinite alternate}
+/* Background: AI-generated fire-dragon / wave image under a dark veil */
+html[data-theme="ds"] body{background:#05030a}
+html[data-theme="ds"] body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:url("bg/ds.webp") center/cover no-repeat}
+html[data-theme="ds"] body::after{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;background:linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.6))}
 /* Checker strip (haori pattern) under the header and above the tabs */
 html[data-theme="ds"] header.bar::after,html[data-theme="ds"] .gohead::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:6px;
   background:conic-gradient(#0f0f0f 25%,#1e7f5c 0 50%,#0f0f0f 0 75%,#1e7f5c 0) 0 0/12px 12px}
@@ -515,14 +477,10 @@ html[data-theme="ds"] .card.hero>*{position:relative;z-index:1}
 html[data-theme="ds"] .card.hero .big{text-shadow:0 2px 14px rgba(255,90,31,.6)}
 html[data-theme="ds"] .card h2{color:#ffcf5a}
 
-@media (prefers-reduced-motion:reduce){
-  html[data-theme="jjk"] body::before,html[data-theme="jjk"] body::after,
-  html[data-theme="ds"] body::before,html[data-theme="ds"] body::after{animation:none}
-}
 
-/* ---------- Sukuna: Malevolent Shrine – blood-red torii, light beam, fire, cleave slashes ---------- */
+/* ---------- Sukuna: Malevolent Shrine ---------- */
 html[data-theme="sukuna"]{
-  --bg:#0f0103;--bg2:#1c0306;--panel:rgba(24,3,6,.82);--panel2:#330609;
+  --bg:#0f0103;--bg2:#1c0306;--panel:rgba(24,3,6,.55);--panel2:#330609;
   --text:#ffece8;--muted:#ffa8a0;--faint:#a8605a;--line:rgba(255,50,50,.3);
   --pink:#ff2a2a;--hot:#ff4d1a;--lila:#ffb020;--soft:#ff8a7a;
   --ok:#ffb020;--warn:#ff6b6b;--danger:#8b0000;--gold:#ffcf5a;--gold-line:#b45309;
@@ -544,19 +502,10 @@ html[data-theme="sukuna"]{
   --voucher-bg:rgba(255,176,32,.08);--voucher-text:#ffe2a8;--voucher-line:#ffb020;
   --menu-back:rgba(0,0,0,.55);--modal-back:rgba(0,0,0,.75);
 }
-html[data-theme="sukuna"] body{background:#0f0103}
-/* Shrine: red haze, beam of light from above, receding torii gates */
-html[data-theme="sukuna"] body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
-  background:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 800' preserveAspectRatio='xMidYMax slice'%3E%3Cg fill='%23160204' stroke='%23ff2a2a' stroke-opacity='.35' stroke-width='1'%3E%3Cg fill-opacity='0.55'%3E%3Crect x='170.4' y='443.9' width='5.5' height='80.0'/%3E%3Crect x='224.2' y='443.9' width='5.5' height='80.0'/%3E%3Cpolygon points='153.2,437.3 246.8,437.3 240.6,443.9 159.4,443.9'/%3E%3Crect x='163.3' y='451.7' width='73.3' height='3.5'/%3E%3Crect x='196.9' y='443.9' width='6.2' height='7.8'/%3E%3C/g%3E%3Cg fill-opacity='0.65'%3E%3Crect x='156.3' y='415.8' width='8.1' height='145.0'/%3E%3Crect x='235.6' y='415.8' width='8.1' height='145.0'/%3E%3Cpolygon points='131.0,406.0 269.0,406.0 259.8,415.8 140.2,415.8'/%3E%3Crect x='145.9' y='427.2' width='108.1' height='5.2'/%3E%3Crect x='195.4' y='415.8' width='9.2' height='11.5'/%3E%3C/g%3E%3Cg fill-opacity='0.75'%3E%3Crect x='135.4' y='368.5' width='11.9' height='250.0'/%3E%3Crect x='252.7' y='368.5' width='11.9' height='250.0'/%3E%3Cpolygon points='98.0,354.1 302.0,354.1 288.4,368.5 111.6,368.5'/%3E%3Crect x='120.1' y='385.5' width='159.8' height='7.6'/%3E%3Crect x='193.2' y='368.5' width='13.6' height='17.0'/%3E%3C/g%3E%3Cg fill-opacity='0.85'%3E%3Crect x='105.0' y='292.5' width='17.5' height='410.0'/%3E%3Crect x='277.5' y='292.5' width='17.5' height='410.0'/%3E%3Cpolygon points='50.0,271.2 350.0,271.2 330.0,292.5 70.0,292.5'/%3E%3Crect x='82.5' y='317.5' width='235.0' height='11.2'/%3E%3Crect x='190.0' y='292.5' width='20.0' height='25.0'/%3E%3C/g%3E%3Cg fill-opacity='0.95'%3E%3Crect x='63.2' y='158.0' width='25.2' height='660.0'/%3E%3Crect x='311.6' y='158.0' width='25.2' height='660.0'/%3E%3Cpolygon points='-16.0,127.4 416.0,127.4 387.2,158.0 12.8,158.0'/%3E%3Crect x='30.8' y='194.0' width='338.4' height='16.2'/%3E%3Crect x='185.6' y='158.0' width='28.8' height='36.0'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") center bottom/cover no-repeat,
-    linear-gradient(90deg,transparent 46%,rgba(255,40,40,.35) 48.5%,#ffd6cc 50%,rgba(255,40,40,.35) 51.5%,transparent 54%) center top/100% 62% no-repeat,
-    radial-gradient(ellipse 30% 40% at 50% 55%,rgba(255,60,60,.55),transparent 70%),
-    radial-gradient(ellipse 90% 35% at 50% 100%,rgba(200,10,20,.7),transparent 70%),
-    linear-gradient(180deg,#2a0306 0%,#5a0610 45%,#1a0204 100%)}
-/* Cleave slashes and embers that flash now and then */
-html[data-theme="sukuna"] body::after{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 800' preserveAspectRatio='xMidYMid slice'%3E%3Cg stroke-linecap='round'%3E%3Cg stroke='%23ff5a2a' stroke-opacity='.35' stroke-width='7'%3E%3Cline x1='20' y1='230' x2='250' y2='150'/%3E%3Cline x1='160' y1='520' x2='390' y2='420'/%3E%3Cline x1='60' y1='660' x2='220' y2='610'/%3E%3C/g%3E%3Cg stroke='%23fff2e0' stroke-opacity='.9' stroke-width='1.6'%3E%3Cline x1='20' y1='230' x2='250' y2='150'/%3E%3Cline x1='160' y1='520' x2='390' y2='420'/%3E%3Cline x1='60' y1='660' x2='220' y2='610'/%3E%3Cline x1='300' y1='90' x2='395' y2='60' stroke-opacity='.6'/%3E%3Cline x1='0' y1='420' x2='90' y2='395' stroke-opacity='.6'/%3E%3C/g%3E%3C/g%3E%3Cg fill='%23ffb020'%3E%3Ccircle cx='70' cy='300' r='1.6'/%3E%3Ccircle cx='330' cy='250' r='1.2'/%3E%3Ccircle cx='120' cy='470' r='1.4'/%3E%3Ccircle cx='280' cy='560' r='1.8'/%3E%3Ccircle cx='210' cy='380' r='1.1'/%3E%3Ccircle cx='360' cy='700' r='1.5'/%3E%3Ccircle cx='40' cy='740' r='1.3'/%3E%3C/g%3E%3C/svg%3E") center/cover no-repeat;animation:sukuna-cut 6s ease-in-out infinite}
-@keyframes sukuna-cut{0%,82%{opacity:.25}86%{opacity:1}100%{opacity:.25}}
+/* Background: AI-generated shrine image under a dark veil */
+html[data-theme="sukuna"] body{background:#05030a}
+html[data-theme="sukuna"] body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;background:url("bg/sukuna.webp") center/cover no-repeat}
+html[data-theme="sukuna"] body::after{content:"";position:fixed;inset:0;z-index:1;pointer-events:none;background:linear-gradient(rgba(0,0,0,0.05),rgba(0,0,0,0.3))}
 html[data-theme="sukuna"] header.bar h1 .gradtext{filter:drop-shadow(0 0 8px rgba(255,40,40,.65))}
 /* Black markings like the arm bands, plus the domain name as watermark */
 html[data-theme="sukuna"] .card.hero::before{content:"";position:absolute;left:0;top:0;bottom:0;width:30px;pointer-events:none;
@@ -568,4 +517,9 @@ html[data-theme="sukuna"] .card.hero>*{position:relative;z-index:1}
 html[data-theme="sukuna"] .card.hero .big{text-shadow:0 0 16px rgba(255,60,30,.8)}
 html[data-theme="sukuna"] .btn.white{border-color:#ff2a2a;box-shadow:0 0 18px rgba(255,40,40,.6)}
 html[data-theme="sukuna"] .card h2{color:#ff8a7a}
-@media (prefers-reduced-motion:reduce){html[data-theme="sukuna"] body::after{animation:none}}
+
+/* Image themes: frosted glass so the artwork shines through */
+html[data-theme="sukuna"] .card,html[data-theme="sukuna"] .block,html[data-theme="sukuna"] .list-item,html[data-theme="sukuna"] .timer,
+html[data-theme="ds"] .card,html[data-theme="ds"] .block,html[data-theme="ds"] .list-item,html[data-theme="ds"] .timer,
+html[data-theme="jjk"] .card,html[data-theme="jjk"] .block,html[data-theme="jjk"] .list-item,html[data-theme="jjk"] .timer{
+  -webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px)}

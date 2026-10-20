@@ -287,7 +287,8 @@
     { id: 'mono', name: 'Schwarz-Weiß', desc: 'Schlicht, Anthrazit', heart: '🤍', meta: '#000000', sw: ['#000000', '#0d0d0d', '#1c1d1f', '#ffffff'] },
     { id: 'classic', name: 'Klassik Gym', desc: 'Sportlich, Rot', heart: '❤️', meta: '#0e0e10', sw: ['#0e0e10', '#18181b', '#1c1c1f', '#e30613'] },
     { id: 'jjk', name: 'Jujutsu', desc: 'Unendliche Leere, blaue Flammen', heart: '💜', meta: '#050816', sw: ['#050816', '#0b1028', '#161c44', '#4f8cff'] },
-    { id: 'ds', name: 'Demon Slayer', desc: 'Flammen- & Wasseratmung', heart: '🔥', meta: '#0c0a0a', sw: ['#0c0a0a', '#161111', '#2a1d1a', '#ff5a1f'] }
+    { id: 'ds', name: 'Demon Slayer', desc: 'Flammen- & Wasseratmung', heart: '🔥', meta: '#0c0a0a', sw: ['#0c0a0a', '#161111', '#2a1d1a', '#ff5a1f'] },
+    { id: 'sukuna', name: 'Sukuna', desc: 'Schrein, Blutrot, Feuer', heart: '👹', meta: '#0f0103', sw: ['#2a0306', '#5a0610', '#330609', '#ff2a2a'] }
   ];
   function theme() {
     var id = S.settings.theme;

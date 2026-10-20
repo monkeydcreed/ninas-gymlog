@@ -285,7 +285,9 @@
     { id: 'depot', name: 'Depot', desc: 'Navy & Gold, edel', heart: '❤️', meta: '#0B1F33', sw: ['#0B1F33', '#F7F5F1', '#FFFFFF', '#B8912F'] },
     { id: 'hud', name: 'Gym-HUD', desc: 'Jarvis, Cyan-Glühen', heart: '💙', meta: '#04070b', sw: ['#04070b', '#061118', '#0a1a24', '#42e8ff'] },
     { id: 'mono', name: 'Schwarz-Weiß', desc: 'Schlicht, Anthrazit', heart: '🤍', meta: '#000000', sw: ['#000000', '#0d0d0d', '#1c1d1f', '#ffffff'] },
-    { id: 'classic', name: 'Klassik Gym', desc: 'Sportlich, Rot', heart: '❤️', meta: '#0e0e10', sw: ['#0e0e10', '#18181b', '#1c1c1f', '#e30613'] }
+    { id: 'classic', name: 'Klassik Gym', desc: 'Sportlich, Rot', heart: '❤️', meta: '#0e0e10', sw: ['#0e0e10', '#18181b', '#1c1c1f', '#e30613'] },
+    { id: 'jjk', name: 'Jujutsu', desc: 'Unendliche Leere, blaue Flammen', heart: '💜', meta: '#050816', sw: ['#050816', '#0b1028', '#161c44', '#4f8cff'] },
+    { id: 'ds', name: 'Demon Slayer', desc: 'Flammen- & Wasseratmung', heart: '🔥', meta: '#0c0a0a', sw: ['#0c0a0a', '#161111', '#2a1d1a', '#ff5a1f'] }
   ];
   function theme() {
     var id = S.settings.theme;

@@ -394,3 +394,115 @@ html[data-theme="classic"] .card.hero::after{content:"";position:absolute;inset:
   background:repeating-linear-gradient(115deg,rgba(255,255,255,.06) 0 14px,transparent 14px 28px)}
 html[data-theme="classic"] .card.hero>*{position:relative;z-index:1}
 html[data-theme="hud"] .gofoot .btn{letter-spacing:.03em;font-size:14px}
+
+/* ---------- Jujutsu: Infinite-Void swirl, starfield, blue flames ---------- */
+html[data-theme="jjk"]{
+  --bg:#050816;--bg2:#0b1028;--panel:rgba(14,18,48,.84);--panel2:#161c44;
+  --text:#e8ecff;--muted:#a5b0e8;--faint:#6670a8;--line:rgba(120,140,255,.28);
+  --pink:#4f8cff;--hot:#7aa8ff;--lila:#b06cff;--soft:#8fb3ff;
+  --ok:#5eead4;--warn:#ff6b8a;--danger:#ff3355;--gold:#c4b5fd;--gold-line:#7c3aed;
+  --grad:linear-gradient(135deg,#2f6bff 0%,#6d4dff 55%,#b06cff 100%);
+  --on-accent:#fff;--primary-border:transparent;--glow:0 0 18px rgba(79,140,255,.45);
+  --shadow:0 10px 30px rgba(0,0,10,.5);
+  --bw:1px;--r-card:16px;--r-btn:12px;--r-inp:10px;--r-pill:999px;
+  --font-title:"Hiragino Kaku Gothic StdN","Hiragino Sans","Avenir Next","Segoe UI",sans-serif;
+  --font-head:"Hiragino Kaku Gothic StdN","Hiragino Sans","Avenir Next","Segoe UI",sans-serif;
+  --title-size:21px;--title-weight:800;--track:.02em;
+  --bar:rgba(5,8,22,.86);--bar-line:1px solid rgba(120,140,255,.3);--bar-text:#e8ecff;
+  --icon-bg:rgba(79,140,255,.1);--icon-line:rgba(120,140,255,.45);--icon-text:#8fb3ff;
+  --title-grad:linear-gradient(90deg,#9cc2ff,#ffffff 45%,#c9a6ff);
+  --hero-bg:radial-gradient(circle at 85% 20%,rgba(176,108,255,.6),transparent 55%),radial-gradient(circle at 10% 100%,rgba(47,107,255,.65),transparent 60%),#0b1028;
+  --hero-text:#fff;--hero-line:rgba(140,160,255,.55);
+  --white-bg:#eaf1ff;--white-text:#2f3fd6;
+  --filled-bg:rgba(79,140,255,.16);--letter-text:#fff;--blink:rgba(94,234,212,.2);
+  --chart-line:#7aa8ff;--chart-grid:rgba(120,140,255,.15);--chart-dot:#050816;--chart-fill:#4f8cff;--chart-fill2:#b06cff;
+  --voucher-bg:rgba(176,108,255,.1);--voucher-text:#e9d5ff;--voucher-line:#b06cff;
+  --menu-back:rgba(2,3,12,.55);--modal-back:rgba(2,3,12,.72);
+}
+html[data-theme="jjk"] body{background-color:#050816;
+  background-image:radial-gradient(1px 1px at 22px 34px,#fff,transparent),radial-gradient(1px 1px at 92px 118px,rgba(255,255,255,.75),transparent),
+    radial-gradient(1.5px 1.5px at 140px 52px,#cfe0ff,transparent),radial-gradient(1px 1px at 58px 150px,rgba(200,180,255,.8),transparent),
+    radial-gradient(1px 1px at 176px 170px,rgba(255,255,255,.6),transparent);
+  background-size:200px 200px}
+/* Domain swirl: rings and a rotating nebula around a bright core */
+html[data-theme="jjk"] body::before{content:"";position:fixed;left:-50%;top:-60%;width:200%;height:200%;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(circle at 50% 50%,rgba(255,255,255,.85) 0,rgba(170,200,255,.55) 4px,rgba(79,140,255,.18) 40px,transparent 110px),
+    repeating-radial-gradient(circle at 50% 50%,transparent 0 44px,rgba(130,160,255,.07) 45px 46px),
+    conic-gradient(from 0deg at 50% 50%,rgba(79,140,255,.22),rgba(176,108,255,.26),rgba(5,8,22,0) 30%,rgba(79,140,255,.2) 45%,rgba(176,108,255,.18) 60%,rgba(5,8,22,0) 75%,rgba(79,140,255,.22));
+  animation:jjk-spin 120s linear infinite}
+@keyframes jjk-spin{to{transform:rotate(360deg)}}
+/* Blue flames along the bottom */
+html[data-theme="jjk"] body::after{content:"";position:fixed;left:0;right:0;bottom:0;height:42vh;z-index:1;pointer-events:none;transform-origin:50% 100%;
+  background:
+    radial-gradient(ellipse 16% 75% at 8% 100%,rgba(79,140,255,.5),transparent 70%),
+    radial-gradient(ellipse 12% 55% at 26% 100%,rgba(140,190,255,.42),transparent 70%),
+    radial-gradient(ellipse 18% 80% at 50% 100%,rgba(60,110,255,.45),transparent 70%),
+    radial-gradient(ellipse 12% 60% at 72% 100%,rgba(150,120,255,.4),transparent 70%),
+    radial-gradient(ellipse 16% 70% at 94% 100%,rgba(79,140,255,.5),transparent 70%);
+  animation:flicker 3.2s ease-in-out infinite alternate}
+@keyframes flicker{0%{transform:scaleY(1);opacity:.8}40%{transform:scaleY(1.07) scaleX(1.01);opacity:1}100%{transform:scaleY(.95);opacity:.75}}
+html[data-theme="jjk"] header.bar h1 .gradtext{filter:drop-shadow(0 0 8px rgba(79,140,255,.6))}
+html[data-theme="jjk"] .card.hero::after{content:"無量空処";position:absolute;right:-4px;bottom:-16px;font-size:56px;font-weight:900;letter-spacing:.05em;
+  font-family:"Hiragino Mincho ProN","Yu Mincho",serif;color:rgba(200,215,255,.09);pointer-events:none;white-space:nowrap}
+html[data-theme="jjk"] .card.hero>*{position:relative;z-index:1}
+html[data-theme="jjk"] .card.hero .big{text-shadow:0 0 18px rgba(120,160,255,.7)}
+html[data-theme="jjk"] .btn.white{box-shadow:0 0 22px rgba(120,170,255,.7)}
+
+/* ---------- Demon Slayer: flame breathing, water-breathing waves, checker haori ---------- */
+html[data-theme="ds"]{
+  --bg:#0c0a0a;--bg2:#161111;--panel:rgba(24,18,18,.9);--panel2:#2a1d1a;
+  --text:#fff3e8;--muted:#e7b9a0;--faint:#9a7566;--line:rgba(255,120,60,.26);
+  --pink:#ff5a1f;--hot:#ff3b0f;--lila:#2ec5e8;--soft:#ffb38a;
+  --ok:#4ade80;--warn:#ff7a7a;--danger:#b91c1c;--gold:#ffcf5a;--gold-line:#b7791f;
+  --grad:linear-gradient(135deg,#c81d11 0%,#ff5a1f 55%,#ffb224 100%);
+  --on-accent:#fff;--primary-border:transparent;--glow:0 6px 20px rgba(255,90,31,.4);
+  --shadow:0 10px 26px rgba(0,0,0,.5);
+  --bw:1px;--r-card:12px;--r-btn:10px;--r-inp:8px;--r-pill:999px;
+  --font-title:"Hiragino Mincho ProN","Yu Mincho","Times New Roman",serif;
+  --font-head:"Hiragino Mincho ProN","Yu Mincho","Times New Roman",serif;
+  --title-size:22px;--title-weight:700;
+  --bar:rgba(12,10,10,.92);--bar-line:none;--bar-text:#fff3e8;
+  --icon-bg:rgba(255,90,31,.1);--icon-line:rgba(255,120,60,.45);--icon-text:#ffb38a;
+  --title-grad:linear-gradient(90deg,#ffcf5a,#ff5a1f 55%,#ff2d55);
+  --hero-bg:linear-gradient(135deg,rgba(200,29,17,.9),rgba(12,10,10,.9) 72%),conic-gradient(#0f0f0f 25%,#1e7f5c 0 50%,#0f0f0f 0 75%,#1e7f5c 0) 0 0/26px 26px;
+  --hero-text:#fff;--hero-line:rgba(255,120,60,.55);
+  --white-bg:#ffcf5a;--white-text:#3a0d05;
+  --filled-bg:rgba(255,90,31,.15);--letter-text:#04222b;--blink:rgba(74,222,128,.2);
+  --chart-line:#ff5a1f;--chart-grid:rgba(255,120,60,.14);--chart-dot:#0c0a0a;--chart-fill:#ff5a1f;--chart-fill2:#2ec5e8;
+  --voucher-bg:rgba(46,197,232,.08);--voucher-text:#d6f6ff;--voucher-line:#2ec5e8;
+  --menu-back:rgba(0,0,0,.5);--modal-back:rgba(0,0,0,.72);
+}
+html[data-theme="ds"] body{background:radial-gradient(600px 380px at 0% 0%,rgba(46,197,232,.14),transparent 70%),#0c0a0a}
+/* Water breathing: seigaiha waves fading out downwards */
+html[data-theme="ds"] body::before{content:"";position:fixed;left:0;right:0;top:0;height:60vh;z-index:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='30'%3E%3Cg stroke='%232ec5e8' stroke-opacity='.22' stroke-width='1.2'%3E%3Cg fill='%230c0a0a'%3E%3Ccircle cx='0' cy='15' r='15'/%3E%3Ccircle cx='60' cy='15' r='15'/%3E%3C/g%3E%3Cg fill='none'%3E%3Ccircle cx='0' cy='15' r='10'/%3E%3Ccircle cx='0' cy='15' r='5'/%3E%3Ccircle cx='60' cy='15' r='10'/%3E%3Ccircle cx='60' cy='15' r='5'/%3E%3C/g%3E%3Ccircle cx='30' cy='30' r='15' fill='%230c0a0a'/%3E%3Cg fill='none'%3E%3Ccircle cx='30' cy='30' r='10'/%3E%3Ccircle cx='30' cy='30' r='5'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-size:60px 30px;
+  -webkit-mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent);mask-image:linear-gradient(to bottom,rgba(0,0,0,.9),transparent);
+  animation:ds-wave 18s linear infinite}
+@keyframes ds-wave{to{background-position:60px 0}}
+/* Flame breathing along the bottom */
+html[data-theme="ds"] body::after{content:"";position:fixed;left:0;right:0;bottom:0;height:46vh;z-index:1;pointer-events:none;transform-origin:50% 100%;
+  background:
+    radial-gradient(ellipse 14% 60% at 6% 100%,rgba(255,178,36,.5),transparent 70%),
+    radial-gradient(ellipse 18% 85% at 22% 100%,rgba(255,70,20,.55),transparent 70%),
+    radial-gradient(ellipse 12% 55% at 40% 100%,rgba(255,190,60,.45),transparent 70%),
+    radial-gradient(ellipse 20% 90% at 60% 100%,rgba(220,30,15,.55),transparent 70%),
+    radial-gradient(ellipse 12% 60% at 80% 100%,rgba(255,140,30,.5),transparent 70%),
+    radial-gradient(ellipse 16% 75% at 96% 100%,rgba(255,60,20,.5),transparent 70%);
+  animation:flicker 2.4s ease-in-out infinite alternate}
+/* Checker strip (haori pattern) under the header and above the tabs */
+html[data-theme="ds"] header.bar::after,html[data-theme="ds"] .gohead::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:6px;
+  background:conic-gradient(#0f0f0f 25%,#1e7f5c 0 50%,#0f0f0f 0 75%,#1e7f5c 0) 0 0/12px 12px}
+html[data-theme="ds"] nav.tabs::before,html[data-theme="ds"] .gofoot::before{content:"";position:absolute;left:0;right:0;top:-6px;height:6px;
+  background:conic-gradient(#0f0f0f 25%,#1e7f5c 0 50%,#0f0f0f 0 75%,#1e7f5c 0) 0 0/12px 12px}
+html[data-theme="ds"] .card.hero::after{content:"全集中";position:absolute;right:6px;bottom:-14px;font-size:58px;font-weight:700;
+  font-family:"Hiragino Mincho ProN","Yu Mincho",serif;color:rgba(255,207,90,.12);pointer-events:none;white-space:nowrap}
+html[data-theme="ds"] .card.hero>*{position:relative;z-index:1}
+html[data-theme="ds"] .card.hero .big{text-shadow:0 2px 14px rgba(255,90,31,.6)}
+html[data-theme="ds"] .card h2{color:#ffcf5a}
+
+@media (prefers-reduced-motion:reduce){
+  html[data-theme="jjk"] body::before,html[data-theme="jjk"] body::after,
+  html[data-theme="ds"] body::before,html[data-theme="ds"] body::after{animation:none}
+}
